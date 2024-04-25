@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown to HTML</title>
+<link rel="stylesheet" href="./dist/prism.min.css">
+</head>
+<body>
+
+<textarea id="markdown-text" rows="10" cols="50">
+</textarea>
+<button id="convert-button">Convert</button>
+
+<div id="markdown-output"></div>
+<script src="./dist/prism.min.js"></script>
+<script src="./dist/prism-autoloader.min.js"></script>
+<script src="./dist/showdown.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function convertMarkdown() {
+        var converter = new showdown.Converter({ simpleLineBreaks: true });
+        var markdownText = document.getElementById('markdown-text').value;
+        var html = converter.makeHtml(markdownText);
+        document.getElementById('markdown-output').innerHTML = html;
+        document.getElementById('markdown-text').style.display = 'none';
+        document.getElementById('convert-button').style.display = 'none';
+        Prism.highlightAll();
+    }
+
+    document.getElementById('convert-button').addEventListener('click', convertMarkdown);
+});
+</script>
+</body>
+</html>

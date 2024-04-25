@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renderizador de Markdown</title>
+</head>
+<body>
+    <div id="markdown-content">
+        ## Título
+        Este é um parágrafo de texto **Markdown**.
+    </div>
+
+    <script src="showdown.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var markdownContent = document.getElementById("markdown-content").innerHTML;
+    var converter = new showdown.Converter(),
+	text      = '# hello, markdown!',
+	html      = converter.makeHtml(text);
+    document.getElementById("markdown-content").innerHTML = html;
+});
+    </script>
+</body>
+</html>
