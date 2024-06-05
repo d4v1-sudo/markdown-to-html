@@ -3,7 +3,7 @@ A complete HTML code for viewing Markdown texts. With support for the most varie
 
 ## How to Use
 
-You can experience Ps4-UI in two ways:
+Two ways:
 
 1. **Clone the Repository**:
 
