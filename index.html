@@ -16,7 +16,7 @@
         transition: background-color 0.3s, color 0.3s;
     }
     body.dark-mode {
-        background-color: #333;
+        background-color: #0d1117;
         color: #f4f4f4;
     }
     textarea {
@@ -59,8 +59,11 @@
         transition: background-color 0.3s, border-color 0.3s;
     }
     body.dark-mode #markdown-output {
-        background-color: #555;
+        background-color: #0d1117;
         border-color: #777;
+    }
+    body.dark-mode #markdown-text{
+        background-color: #0d1117;
     }
     #edit-button {
         display: none;
@@ -126,6 +129,19 @@
     }
     .slider.round:before {
         border-radius: 50%;
+    }
+    a {
+        color: #4493F8;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    code {
+        background-color: #6E768166; /* Semi-transparent gray */
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-size: 0.9em;
     }
 </style>
 </head>
