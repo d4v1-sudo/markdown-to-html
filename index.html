@@ -150,7 +150,6 @@
         line-height: 1.4;
         transition: background-color 0.3s, color 0.3s;
     }
-    
     pre code {
         background-color: inherit;
         color: inherit;
@@ -172,12 +171,60 @@
         color: #ffffff;
         text-decoration: none;
     }
+    /* Tables */
+    table {
+        /* width: 100%; */
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+    th, td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: #f6f8fa;
+        color: #24292e;
+        font-weight: bold;
+        border-bottom: 2px solid #e1e4e8;
+        text-align: center;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    body.dark-mode table {
+        border-color: #444c56;
+    }
+    body.dark-mode th, body.dark-mode td {
+        border: 1px solid #555;
+        color: #c9d1d9;
+    }
+    body.dark-mode th {
+        background-color: #30363d;
+    }
+    body.dark-mode tr:nth-child(even) {
+        background-color: #21262d;
+    }
+    /* Quotes */
+    blockquote {
+        border-left: 4px solid #dfe2e5;
+        padding: 0 16px;
+        margin: 0 0 16px;
+        color: #333;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    body.dark-mode blockquote {
+        border-left: 4px solid #30363d;
+        color: #8D96A0;
+    }
 </style>
 </head>
 <body>
 
 <!-- Markdown text -->
-<textarea id="markdown-text" rows="20" cols="50">
+<textarea id="markdown-text" rows="10" cols="50">
 </textarea>
 <!-- Convert button -->
 <button id="convert-button" title="/">Convert</button>
@@ -196,10 +243,14 @@
 
 <script src="./dist/prism.min.js"></script>
 <script src="./dist/prism-autoloader.min.js"></script>
-<script src="./dist/showdown.js"></script>
+<script src="./dist/showdown.min.js"></script>
+<script src="./dist/showdown-table.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var converter = new showdown.Converter({ simpleLineBreaks: true });
+    var converter = new showdown.Converter({ 
+        simpleLineBreaks: true,
+        tables: true // Enable table support
+    });
 
     function convertMarkdown() {
         var markdownText = document.getElementById('markdown-text').value;
@@ -225,11 +276,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleShortcut(event) {
-        // Verifica se o foco está no textarea para permitir a digitação normal
+        // Checks if focus is on the textarea to allow normal typing
         if (event.target.tagName === 'TEXTAREA') {
             return;
         }
-        // Verifica se a tecla pressionada é '/'
+        // Verify if pressed key is '/'
         if (event.key === '/') {
             event.preventDefault();
             if (document.getElementById('markdown-text').style.display === 'none') {
