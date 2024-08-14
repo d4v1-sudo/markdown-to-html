@@ -17,7 +17,7 @@
     }
     body.dark-mode {
         background-color: #0d1117;
-        color: #f4f4f4;
+        color: #ffffff;
     }
     textarea {
         width: 100%;
@@ -33,9 +33,9 @@
         transition: background-color 0.3s, color 0.3s;
     }
     body.dark-mode textarea {
-        background-color: #555;
-        color: #f4f4f4;
-        border: 1px solid #777;
+        background-color: #30363d;
+        color: #c9d1d9;
+        border: 1px solid #444c56;
     }
     button {
         padding: 10px 20px;
@@ -61,9 +61,6 @@
     body.dark-mode #markdown-output {
         background-color: #0d1117;
         border-color: #777;
-    }
-    body.dark-mode #markdown-text{
-        background-color: #0d1117;
     }
     #edit-button {
         display: none;
@@ -142,18 +139,50 @@
         padding: 2px 4px;
         border-radius: 4px;
         font-size: 0.9em;
+        display: inline-block;
+    }
+    pre {
+        background-color: #f5f2f0;
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+        font-size: 0.9em;
+        line-height: 1.4;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    
+    pre code {
+        background-color: inherit;
+        color: inherit;
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+    
+    body.dark-mode pre {
+        background-color: #161B22;
+    }
+    
+    body.dark-mode pre code {
+        background-color: inherit;
+        color: #c9d1d9;
+    }
+
+    body.dark-mode code {
+        background-color: #6E768166;
+        color: #ffffff;
+        text-decoration: none;
     }
 </style>
 </head>
 <body>
 
 <!-- Markdown text -->
-<textarea id="markdown-text" rows="10" cols="50">
+<textarea id="markdown-text" rows="20" cols="50">
 </textarea>
 <!-- Convert button -->
-<button id="convert-button">Convert</button>
+<button id="convert-button" title="/">Convert</button>
 <!-- Edit button -->
-<button id="edit-button">Edit</button>
+<button id="edit-button" title="/">Edit</button>
 <!-- Dark mode toggle switch -->
 <div class="dark-mode-toggle">
     <label class="dark-mode-switch">
@@ -179,7 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('markdown-text').style.display = 'none';
         document.getElementById('convert-button').style.display = 'none';
         document.getElementById('edit-button').style.display = 'inline-block';
-        // Activate Prism.js to highlight code
         Prism.highlightAll();
     }
 
@@ -196,12 +224,31 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('dark-mode-toggle').checked = isDarkMode;
     }
 
+    function handleShortcut(event) {
+        // Verifica se o foco está no textarea para permitir a digitação normal
+        if (event.target.tagName === 'TEXTAREA') {
+            return;
+        }
+        // Verifica se a tecla pressionada é '/'
+        if (event.key === '/') {
+            event.preventDefault();
+            if (document.getElementById('markdown-text').style.display === 'none') {
+                document.getElementById('edit-button').click();
+            } else {
+                document.getElementById('convert-button').click();
+            }
+        }
+    }
+
     document.getElementById('convert-button').addEventListener('click', convertMarkdown);
     document.getElementById('edit-button').addEventListener('click', editMarkdown);
     document.getElementById('dark-mode-toggle').addEventListener('change', toggleDarkMode);
 
     // Initialize dark mode based on checkbox state
     toggleDarkMode();
+
+    // Add event listener for keydown event
+    document.addEventListener('keydown', handleShortcut);
 });
 </script>
 </body>
