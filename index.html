@@ -5,30 +5,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Markdown to HTML</title>
 <link rel="stylesheet" href="./dist/prism.min.css">
+<link rel="icon" type="image/x-icon" href="favicon.png">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    textarea {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-family: monospace;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        resize: vertical;
+    }
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #markdown-output {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        min-height: 100px;
+    }
+    #edit-button {
+        display: none;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #28a745;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    #edit-button:hover {
+        background-color: #218838;
+    }
+</style>
 </head>
 <body>
 
+<!-- Markdown text -->
 <textarea id="markdown-text" rows="10" cols="50">
 </textarea>
+<!-- Convert button -->
 <button id="convert-button">Convert</button>
+<!-- Edit button -->
+<button id="edit-button">Edit</button>
 
+<!-- Where HTML will be displayed -->
 <div id="markdown-output"></div>
+
 <script src="./dist/prism.min.js"></script>
 <script src="./dist/prism-autoloader.min.js"></script>
 <script src="./dist/showdown.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    var converter = new showdown.Converter({ simpleLineBreaks: true });
+
     function convertMarkdown() {
-        var converter = new showdown.Converter({ simpleLineBreaks: true });
         var markdownText = document.getElementById('markdown-text').value;
         var html = converter.makeHtml(markdownText);
         document.getElementById('markdown-output').innerHTML = html;
         document.getElementById('markdown-text').style.display = 'none';
         document.getElementById('convert-button').style.display = 'none';
+        document.getElementById('edit-button').style.display = 'inline-block';
+        // Activate Prism.js to highlight code
         Prism.highlightAll();
     }
 
+    function editMarkdown() {
+        document.getElementById('markdown-text').style.display = 'block';
+        document.getElementById('convert-button').style.display = 'inline-block';
+        document.getElementById('edit-button').style.display = 'none';
+        document.getElementById('markdown-output').innerHTML = '';
+    }
+
     document.getElementById('convert-button').addEventListener('click', convertMarkdown);
+    document.getElementById('edit-button').addEventListener('click', editMarkdown);
 });
 </script>
 </body>
