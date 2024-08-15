@@ -219,6 +219,10 @@
         border-left: 4px solid #30363d;
         color: #8D96A0;
     }
+    #markdown-output img {
+        max-width: 100%;
+        height: auto;
+    }
 </style>
 </head>
 <body>
@@ -249,7 +253,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     var converter = new showdown.Converter({ 
         simpleLineBreaks: true,
-        tables: true // Enable table support
+        tables: true,
+        tasklists: true,
+        strikethrough: true,
+        ghCodeBlocks: true,
+        smoothLivePreview: true,
+        simplifiedAutoLink: true,
+        literalMidWordUnderscores: true
     });
 
     function convertMarkdown() {
