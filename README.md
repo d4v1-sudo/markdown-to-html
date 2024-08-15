@@ -1,5 +1,5 @@
 # Markdown to html
-A complete HTML code for viewing Markdown texts. With support for the most varied types of programming languages to see in Markdown.
+A complete HTML code for viewing Markdown texts using showdown js and prism js. With support for the most varied types of programming languages to see in Markdown.
 
 ## How to Use
 
@@ -20,12 +20,6 @@ Then, open the `index.html` file in your browser to start exploring the interfac
 - Extract the ZIP file on your computer and open the `index.html` file in your browser.
 
 ## Contributions
-
-- Item 1
-- Item 2
-  - Subitem 1
-  - Subitem 2
-- Item 3
 
 Contributions are welcome! Feel free to open issues or send pull requests to enhance this project.
 
