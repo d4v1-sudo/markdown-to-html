@@ -236,7 +236,7 @@
     }
 </style>
 </head>
-<body>
+<body class="dark-mode">
 
 <!-- Markdown text -->
 <textarea id="markdown-text" rows="10" cols="50">
@@ -248,7 +248,7 @@
 <!-- Dark mode toggle switch -->
 <div class="dark-mode-toggle">
     <label class="dark-mode-switch">
-        <input type="checkbox" id="dark-mode-toggle">
+        <input type="checkbox" id="dark-mode-toggle" checked>
         <span class="slider round"></span>
     </label>
 </div>
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('dark-mode-toggle').addEventListener('change', toggleDarkMode);
 
     // Initialize dark mode based on checkbox state
-    toggleDarkMode();
+    // toggleDarkMode();
 
     // Add event listener for keydown event
     document.addEventListener('keydown', handleShortcut);
