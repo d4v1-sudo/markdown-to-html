@@ -114,69 +114,69 @@ SURBVBhXYwCC/2AAZYEoOAMs8Z+BgQEAXdcR7/Q1gssAAAAASUVORK5CYII=)
 2. [Python Documentation](https://docs.python.org/3/)
 
 ```python
-def px_to_em(px, base_font_size=16):
-    """Converte pixels para em."""
-    return px / base_font_size
+# Este é um comentário simples
 
-def px_to_rem(px, root_font_size=16):
-    """Converte pixels para rem (relativo ao tamanho da fonte raiz)."""
-    return px / root_font_size
+# Definição de uma função
+def exemplo_funcao(parametro1, parametro2):
+    """
+    Esta é uma função exemplo que realiza uma operação simples.
+    """
+    resultado = parametro1 + parametro2
+    return resultado
 
-def em_to_px(em, base_font_size=16):
-    """Converte em para pixels."""
-    return em * base_font_size
+# Definição de uma classe
+class ExemploClasse:
+    def __init__(self, valor):
+        self.valor = valor
+    
+    def mostrar_valor(self):
+        print(f"O valor é: {self.valor}")
 
-def font_weight_to_numeric(font_weight):
-    """Converte font-weight (normal, bold, etc.) para seu valor numérico equivalente."""
-    font_weights = {
-        'normal': 400,
-        'bold': 700,
-        'bolder': 900,
-        'lighter': 100,
-    }
-    return font_weights.get(font_weight.lower(), font_weight)
+    def incrementar_valor(self, incremento):
+        self.valor += incremento
 
-def numeric_to_font_weight(weight):
-    """Converte valores numéricos de font-weight para seus equivalentes nominais."""
-    if weight <= 300:
-        return 'lighter'
-    elif 301 <= weight <= 400:
-        return 'normal'
-    elif 401 <= weight <= 700:
-        return 'bold'
-    else:
-        return 'bolder'
+# Funções internas e chamadas de função
+def exemplo_avancado():
+    numero = 10
+    incremento = 5
 
-def convert_values():
-    print("Escolha o tipo de conversão:")
-    print("1. px para em")
-    print("2. px para rem")
-    print("3. em para px")
-    print("4. font-weight para valor numérico")
-    print("5. valor numérico para font-weight")
-    choice = int(input("Digite o número da opção desejada: "))
+    # Funções incorporadas
+    numero_str = str(numero)  # Conversão de número para string
+    incremento_str = str(incremento)
 
-    if choice == 1:
-        px_value = float(input("Digite o valor em px: "))
-        base_font_size = float(input("Digite o tamanho base da fonte em px (padrão 16px): ") or 16)
-        print(f"{px_value}px = {px_to_em(px_value, base_font_size)}em")
-    elif choice == 2:
-        px_value = float(input("Digite o valor em px: "))
-        root_font_size = float(input("Digite o tamanho da fonte raiz em px (padrão 16px): ") or 16)
-        print(f"{px_value}px = {px_to_rem(px_value, root_font_size)}rem")
-    elif choice == 3:
-        em_value = float(input("Digite o valor em em: "))
-        base_font_size = float(input("Digite o tamanho base da fonte em px (padrão 16px): ") or 16)
-        print(f"{em_value}em = {em_to_px(em_value, base_font_size)}px")
-    elif choice == 4:
-        font_weight = input("Digite o valor de font-weight (normal, bold, etc.): ")
-        print(f"{font_weight} = {font_weight_to_numeric(font_weight)}")
-    elif choice == 5:
-        numeric_weight = int(input("Digite o valor numérico de font-weight: "))
-        print(f"{numeric_weight} = {numeric_to_font_weight(numeric_weight)}")
-    else:
-        print("Opção inválida. Por favor, escolha um número válido.")
+    # Chamada de função definida pelo usuário
+    novo_valor = exemplo_funcao(numero, incremento)
 
+    print(f"Novo valor calculado: {novo_valor}")
+
+    # Trabalhando com a classe
+    objeto = ExemploClasse(novo_valor)
+    objeto.mostrar_valor()
+    objeto.incrementar_valor(3)
+    objeto.mostrar_valor()
+
+# Palavras-chave e operadores
 if __name__ == "__main__":
-    convert_values()
+    # Testando a função avançada
+    exemplo_avancado()
+    
+    # Mais exemplos com operadores
+    x = 10
+    y = 20
+    z = (x + y) * (x - y) / (x ** 2)
+    print(f"Resultado final: {z}")
+
+    # Usando valores booleanos
+    condicao = True
+    if condicao and not False:
+        print("A condição é verdadeira")
+
+    # Trabalhando com None
+    nada = None
+    if nada is None:
+        print("Nada é igual a None")
+
+# Utilizando funções incorporadas comuns
+print("Valor absoluto de -5:", abs(-5))
+print("Valor máximo entre 3, 7 e 2:", max(3, 7, 2))
 ```
